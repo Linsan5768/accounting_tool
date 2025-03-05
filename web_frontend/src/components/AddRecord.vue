@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="form-card">
-      <h2 class="card-title">📒记账</h2>
+      <h2 class="card-title">📒开始记账</h2>
       <form @submit.prevent="submitRecord">
 
         <!-- 日期选择 -->
@@ -105,6 +105,7 @@ export default {
             category_id: '',
             remarks: ''
         },
+        formattedAmount: "",
         categories: [],  // 存储类别数据
         loading: false,
         validationError: '',
@@ -247,20 +248,16 @@ export default {
   
   <style>
   :root {
-    --page-bg: #c0bfbf70;           /* 页面背景：橘黄色 */
-    --card-bg: #ffffff31;              /* 卡片背景：白色 */
+    --page-bg: #ffffff;           /* 页面背景：橘黄色 */
+    --card-bg: #ffffff;              /* 卡片背景：白色 */
     --card-text: #000000;            /* 卡片文字：深灰 */
-    --input-border: #000000;         /* 输入框边框：浅灰 */
+    --input-border: #6c6b6bc1;         /* 输入框边框：浅灰 */
     --btn-bg: #6c6b6bc1;            /* 按钮背景：绿色 */
     --btn-hover-bg: #518a5d;      /* 按钮悬停背景：深绿色 */
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  body {
-  background: url('/Users/lin/LinZ/Accounting_tool/web_frontend/src/assets/P.jpg') no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
-}
+
 body::before {
   content: "";
   position: absolute;
@@ -268,7 +265,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* 轻微暗化背景，提升对比度 */
+  background: rgb(255, 255, 255); /* 轻微暗化背景，提升对比度 */
   z-index: -1;
 }
 
@@ -285,7 +282,7 @@ body::before {
   .form-card {
   font-family: "Poppins", "Arial", sans-serif; /* 现代感字体 */
   font-size: 16px; /* 默认字体大小 */
-  background: rgba(206, 206, 206, 0.704); /* 轻微透明，提高对比度 */
+  background: rgb(255, 255, 255); /* 轻微透明，提高对比度 */
   backdrop-filter: blur(8px); /* 玻璃质感 */
   border-radius: 12px; /* 增加圆角 */
   padding: 2rem;
@@ -293,6 +290,7 @@ body::before {
   width: 100%;
   max-width: 800px;
   text-align: left;
+  margin-top: -200px;
 }
 
   
@@ -326,7 +324,7 @@ body::before {
   
 .form-control,
 .form-select {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(255, 255, 255);
   border: 1px solid var(--input-border);
   border-radius: 8px;
   padding: 0.75rem;
@@ -365,7 +363,7 @@ body::before {
   .toggle-group {
   display: flex;
   border-radius: 8px;
-  background: #eee;
+  background: #b4b4b4b0;
   padding: 5px;
 }
 
@@ -381,7 +379,7 @@ body::before {
 
 input:checked + .toggle-btn {
   background: var(--btn-bg);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 
@@ -404,7 +402,7 @@ input:checked + .toggle-btn {
   overflow-x: auto; /* 启用横向滚动 */
   white-space: nowrap;
   border-radius: 6px;
-  background: #eee;
+  background: #d0cfcfb7;
   padding: 4px; /* 适当增加 padding */
   position: relative;
   display: flex;
@@ -528,7 +526,7 @@ input:checked + .toggle-btn {
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid var(--input-border);
-  background: #fff;
+  background: #d0cfcfb7;
   transition: all 0.3s ease-in-out;
 }
 
@@ -548,7 +546,7 @@ input:checked + .toggle-btn {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid var(--input-border);
-  background: #fff;
+  background: #d0cfcfb7;
   transition: all 0.3s ease-in-out;
   resize: none; /* 禁止手动调整大小 */
   min-height: 40px; /* 设置最小高度 */

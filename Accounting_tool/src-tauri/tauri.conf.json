@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "accounting_tool",
+  "version": "0.1.0",
+  "identifier": "com.accountingtool.app",
+  "build": {
+  "beforeDevCommand": "cd /Users/lin/LinZ/Accounting_tool/web_frontend && npm run serve",
+  "devUrl": "http://localhost:8080",
+  "beforeBuildCommand": "cd /Users/lin/LinZ/Accounting_tool/web_frontend && npm run build",
+  "frontendDist": "/Users/lin/LinZ/Accounting_tool/web_frontend/dist"
+},
+  "app": {
+    "windows": [
+      {
+        "title": "记账",
+        "width": 1200,
+        "height": 800
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["dmg"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
